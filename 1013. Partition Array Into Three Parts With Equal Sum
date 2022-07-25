@@ -1,0 +1,54 @@
+bool integer(float f)
+    {
+        if(f==int(f))
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
+    }
+    bool canThreePartsEqualSum(vector<int>& arr) {
+        int sum = 0;
+        int size = arr.size();
+        for(int i=0 ; i<size; i++)
+        {
+            sum = sum+arr[i];
+        }
+        float a = sum/3.0;
+        //cout << a;
+        bool q = false;
+        if(integer(a)==true)
+        {
+            int p = int(a);
+            int index = 0;
+            int i=0;
+            for(; i<3 && index<size; i++)
+            {
+                cout << "okk";
+                int sum_arr =0;
+                //cout << sum_arr;
+                do
+                {
+                    sum_arr = sum_arr+arr[index];
+                    cout << sum_arr << endl;
+                    index++;
+                }while(sum_arr !=p && index<size);
+                if(sum_arr !=p)
+                {
+                    q = false;
+                }else
+                {
+                    q = true;
+                }
+            }
+            if(i==3 && q==true)
+            {
+                q = true;
+            }else
+            {
+                q = false;
+            }
+        }
+        return q;
+    }
