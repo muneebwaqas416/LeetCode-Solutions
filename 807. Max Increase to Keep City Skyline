@@ -1,0 +1,43 @@
+int findmax(vector<vector<int>>& grid,int row,int col,int size)
+    {
+        int max_col = -1000;
+        for(int i=0 ; i<size; i++)
+        {
+            if(grid[row][i]>max_col)
+            {
+                max_col = grid[row][i];
+            }
+        }
+        int max_row = -1000;
+        for(int i=0 ; i<size; i++)
+        {
+            if(grid[i][col]>max_row)
+            {
+                max_row = grid[i][col];
+            }
+        }
+        //int return_type = 0;
+        if(max_col<max_row)
+        {
+            return max_col;
+        }else
+        {
+            return max_row;
+        }
+    }
+    int maxIncreaseKeepingSkyline(vector<vector<int>>& grid) {
+        int size = grid.size();
+        int sum = 0;
+        for(int i=0 ; i<size; i++)
+        {
+            for(int j=0 ; j<size; j++)
+            {
+                int a = findmax(grid,i,j,size);
+                int b = grid[i][j];
+                int diff = a-b;
+                sum = sum+diff;
+            }
+        }
+        return sum;
+        
+    }
