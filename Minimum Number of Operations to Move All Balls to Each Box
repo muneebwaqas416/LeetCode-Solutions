@@ -1,0 +1,22 @@
+vector<int> minOperations(string boxes) {
+        int size = boxes.size();
+        vector<int> answers(size);
+        for(int i=0 ; i<size; i++)
+        {
+            int count = 0;
+            for(int j=0 ; j<size; j++)
+            {
+                if(boxes[j]=='1')
+                {
+                    int a = j-i;
+                    if(a<0)
+                    {
+                        a = -a;
+                    }
+                    count+=a;
+                }
+            }
+            answers[i] = count;
+        }
+        return answers;   
+    }
