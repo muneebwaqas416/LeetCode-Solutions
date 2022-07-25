@@ -1,0 +1,54 @@
+
+    int countBeamafter(vector<string>& bank , int row)
+    {
+        int count = 0;
+        int size = bank.size();
+        for(int i=row ; i<size ; i++)
+        {
+            int col = bank[i].size();
+            for(int j=0 ; j<col; j++)
+            {
+                if(bank[i][j]=='1')
+                {
+                    count++;
+                }
+            }
+            if(count>0)
+            {
+                break;
+            }
+        }
+        return count;
+    }
+    int numberOfBeams(vector<string>& bank) {
+        int size = bank.size();
+        int count = 0;
+        int i=0;
+        int row = -100;
+        int a = 0;
+        for(; i<size-1; i++)
+        {
+            int col = bank[i].size();
+            for(int j=0 ; j<col; j++)
+            {
+                if(row==i && bank[i][j]=='1')
+                {
+                    count = count+a;
+                    
+                }else
+                {
+                    if(bank[i][j]=='1')
+                    {
+                        row = i;
+                        a = countBeamafter(bank,i+1);
+                        count = count+a;
+                    }
+                }
+            }
+            a = 0;
+            row = -100;
+        }
+        return count;
+    }
+        // Runtime: 310 ms, faster than 5.14% of C++ online submissions for Number of Laser Beams in a Bank.
+        // Memory Usage: 23 MB, less than 73.46% of C++ online submissions for Number of Laser Beams in a Bank.
