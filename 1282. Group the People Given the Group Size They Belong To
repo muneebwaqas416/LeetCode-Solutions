@@ -1,0 +1,31 @@
+vector<vector<int>> groupThePeople(vector<int>& groupSizes) {
+        int size = groupSizes.size();
+        vector<vector<int>> arr(size);
+        int i =0;
+        int count_resize = 0;
+        for(;i<size;)
+        {
+            if(groupSizes[i]!=-1)
+            {
+                int a = groupSizes[i];
+                int count = 0;
+                arr[count_resize] = vector<int>(a);
+                for(int j=i; j<size && count!=a; j++)
+                {
+                    if(groupSizes[j]==a)
+                    {
+                        arr[count_resize][count] = j;
+                        groupSizes[j] = -1;
+                        count++;
+                    }
+                }
+                count_resize++;
+            }else
+            {
+                i++;
+            }
+        }
+        arr.resize(count_resize);
+        return arr;
+        
+    }
