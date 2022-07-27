@@ -1,0 +1,21 @@
+vector<int> countPoints(vector<vector<int>>& points, vector<vector<int>>& queries) 
+    {
+        int size = queries.size();
+        vector<int> answers(size);
+        int index = 0;
+        for(int i=0; i<size; i++)
+        {
+            double r = queries[i][2];
+            int count = 0;
+            for(int j=0 ; j<points.size(); j++)
+            {
+                double k = sqrt((queries[i][0]-points[j][0])*(queries[i][0]-points[j][0])+(queries[i][1]-points[j][1])*(queries[i][1]-points[j][1]));
+                if(k<=r)
+                {
+                    count++;
+                }
+            }
+            answers[i] = count;
+        }
+        return answers;
+    }
