@@ -1,0 +1,132 @@
+class Solution {
+public:
+    bool check_coordinates(int row, int col,vector<vector<int>>& queens)
+    {
+        bool a = false;
+       for(int i=0 ; i<queens.size(); i++)
+       {
+           if(row==queens[i][0] && col==queens[i][1])
+           {
+               a = true;
+               break;
+           }
+       }
+        return a;
+    }
+    vector<vector<int>> queensAttacktheKing(vector<vector<int>>& queens, vector<int>& king) {
+        vector<vector<int>> arr(queens.size(),vector<int>(2));
+        int i = king[0];
+        int j = king[1];
+        int count = 0;
+            int a = i;
+            int b = j;
+            while(a<8)
+            {
+                a++;
+                if(check_coordinates(a,b,queens)==true)
+                {
+                    arr[count][0] = a;
+                    arr[count][1] = b;
+                    count++;
+                    break;
+                }   
+            }
+            a = i;
+            b = j;
+            while(a>=0)
+            {
+                a--;
+                if(check_coordinates(a,b,queens)==true)
+                {
+                    arr[count][0] = a;
+                    arr[count][1] = b;
+                    count++;
+                    break;
+                }   
+            }
+            a = i;
+            b = j;
+            while(b<8)
+            {
+                b++;
+                if(check_coordinates(a,b,queens)==true)
+                {
+                    arr[count][0] = a;
+                    arr[count][1] = b;
+                    count++;
+                    break;
+                }   
+            }
+            a = i;
+            b = j;
+            while(b>=0)
+            {
+                b--;
+                if(check_coordinates(a,b,queens)==true)
+                {
+                    arr[count][0] = a;
+                    arr[count][1] = b;
+                    count++;
+                    break;
+                }   
+            }
+            a = i;
+            b = j;
+            while(b<8 && a<8)
+            {
+                b++;
+                a++;
+                if(check_coordinates(a,b,queens)==true)
+                {
+                    arr[count][0] = a;
+                    arr[count][1] = b;
+                    count++;
+                    break;
+                }   
+            }
+            a = i;
+            b = j;
+            while(b>=0 && a>=0)
+            {
+                b--;
+                a--;
+                if(check_coordinates(a,b,queens)==true)
+                {
+                    arr[count][0] = a;
+                    arr[count][1] = b;
+                    count++;
+                    break;
+                }   
+            }
+            a = i;
+            b = j;
+            while(b<8 && a>=0)
+            {
+                b++;
+                a--;
+                if(check_coordinates(a,b,queens)==true)
+                {
+                    arr[count][0] = a;
+                    arr[count][1] = b;
+                    count++;
+                    break;
+                }   
+            }
+            a = i;
+            b = j;
+            while(b>=0 && a<8)
+            {
+                b--;
+                a++;
+                if(check_coordinates(a,b,queens)==true)
+                {
+                    arr[count][0] = a;
+                    arr[count][1] = b;
+                    count++;
+                    break;
+                }   
+            }
+            arr.resize(count);
+        return arr;
+    }
+};
