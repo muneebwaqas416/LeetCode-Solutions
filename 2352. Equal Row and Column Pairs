@@ -1,0 +1,27 @@
+void Checkcolumnwise(vector<vector<int>>& grid , vector<int> &row , int &count)
+    {
+        for(int i = 0; i<grid.size(); i++)
+        {
+            int count_1 = 0;
+            for(int j=0 ; j<grid.size(); j++)
+            {
+                if(grid[j][i]==row[j])
+                {
+                    count_1++;
+                }
+            }
+            if(count_1==grid.size())
+            {
+                count++;          
+            }
+        }
+    }
+    int equalPairs(vector<vector<int>>& grid) {
+        int count = 0;
+        for(int i=0 ; i<grid.size(); i++)
+        {
+            Checkcolumnwise(grid,grid[i],count);
+        }
+        return count;
+        
+    }
