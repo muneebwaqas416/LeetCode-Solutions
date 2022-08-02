@@ -1,0 +1,39 @@
+void DFS(vector<vector<int>>& grid,int row , int col,int& count)
+    {
+        int size = grid.size();
+        int size_1 = grid[0].size();
+        if(row<0 || col<0 || row>=size || col>=size_1 || grid[row][col]==0 || grid[row][col]==-1)
+        {
+            return;
+        }
+            count++;
+            grid[row][col] = -1;
+            cout << row << col ;
+            DFS(grid,row+1,col,count);
+            DFS(grid,row-1,col,count);
+            DFS(grid,row,col+1,count);
+            DFS(grid,row,col-1,count);
+    }
+    int maxAreaOfIsland(vector<vector<int>>& grid) {
+        int max = 0; 
+        for(int i=0 ; i<grid.size(); i++)
+        {
+            for(int j=0 ; j<grid[i].size(); j++)
+            {
+                if(grid[i][j]==1)
+                {
+                    int count = 0;
+                    
+                   // cout << "Not return when " << i << " " << j ;
+                    DFS(grid,i,j,count);
+                    //cout << "Not return when " << i << " " << j ;
+                    if(count>max)
+                    {
+                        max = count;
+                    }
+                }
+            }
+        }
+        return max;
+        
+    }
