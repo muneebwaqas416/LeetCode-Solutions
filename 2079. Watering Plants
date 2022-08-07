@@ -1,0 +1,24 @@
+void Fullcapacity(int &capacity , int & a)
+    {
+        capacity = a;
+    }
+    int wateringPlants(vector<int>& plants, int capacity) {
+        int a = capacity;
+        int sum = 0;
+        for(int i = 0; i<plants.size(); i++)
+        {
+            if(capacity<plants[i])
+            {
+                sum = sum+i;
+                Fullcapacity(capacity,a);
+                capacity = capacity-plants[i];
+                sum = sum+(i+1);
+            }else
+            {
+                capacity = capacity-plants[i];
+                sum++;
+            }
+            cout << sum << endl;
+        }
+        return sum;
+    }
