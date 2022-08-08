@@ -1,0 +1,26 @@
+vector<int> rearrangeArray(vector<int>& nums) {
+        vector<int> arr(nums.size());
+        vector<int> arr_neg((nums.size()/2));
+        vector<int> arr_pos((nums.size()/2));
+        int count = 0 , count_1 = 0;
+        for(int i=0 ; i<nums.size(); i++)
+        {
+            if(nums[i]>=0)
+            {
+                arr_pos[count] = nums[i];
+                count++;
+            }else if(nums[i]<0)
+            {
+                arr_neg[count_1] = nums[i];
+                count_1++;
+            }
+        }
+        int index = 0;
+        for(int i=0 ; i<(nums.size()/2); i++)
+        {
+            arr[index] = arr_pos[i];
+            arr[index+1] = arr_neg[i];
+            index = index+2;
+        }
+        return arr;
+    }
