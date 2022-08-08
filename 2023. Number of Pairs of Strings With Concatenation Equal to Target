@@ -1,0 +1,25 @@
+string concatenateandconvert(string a , string b)
+    {
+        string c = a+b;
+        return c;
+    }
+    
+    int numOfPairs(vector<string>& nums, string target) {
+        int count = 0;
+        for(int i= 0 ;i<nums.size(); i++)
+        {
+            for(int j =0; j<nums.size() ;j++)
+            {
+                if(j!=i)
+                {
+                    string num = concatenateandconvert(nums[i],nums[j]);
+                    cout << num << endl;
+                    if(num==target)
+                    {
+                        count++;
+                    }
+                }
+            }
+        }    
+        return count;
+    }
